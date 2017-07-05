@@ -57,3 +57,27 @@ yTrain = convert(Array{Int32}, yTrain)
 println("60%")
 
 ####################################
+
+using DecisionTree
+
+#Train random forest with
+#20 for number of features chosen at each random split,
+#50 for number of trees,
+#and 1.0 for ratio of subsampling.
+model = build_forest(yTrain, xTrain, 20, 50, 1.0)
+println("70%")
+
+#Get predictions for test data
+predTest = apply_forest(model, xTest)
+println("80%")
+
+#Convert integer predictions to character
+labelsInfoTest[:Class] = map(Char, predTest)
+println("90%")
+
+#####################################
+
+writetable("$(path)/juliaSubmission.csv", labelsInfoTest, separator=',', header=true)
+println("100%")
+
+accuracy = nfoldCV_forest(yTrain, xTrain, 20, 50, 4, 1.0);
