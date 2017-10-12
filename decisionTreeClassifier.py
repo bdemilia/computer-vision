@@ -75,7 +75,7 @@ println("80%")
 labelsInfoTest[:Class] = map(Char, predTest)
 println("90%")
 
-#####################################
+
 
 writetable("$(path)/juliaSubmission.csv", labelsInfoTest, separator=',', header=true)
 println("100%")
