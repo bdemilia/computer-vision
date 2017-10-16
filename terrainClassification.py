@@ -118,7 +118,7 @@ def predict_model(model, state, train, val, output_file, pre_transforms):
     print(test_predictions.shape)
 
 
-    # Save train, val and test
+    # Train, val and test
     np.savez(
         paths.predictions + output_file,
         train=train_predictions,
